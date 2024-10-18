@@ -6,6 +6,6 @@ const checkMerchantRole = require('../middleware/roleMiddleware');
 const router = express.Router();
 
 router.post('/', authenticateJWT, checkMerchantRole, createProduct);
-router.get('/', authenticateJWT, getProducts);
+router.get('/', getProducts);
 
 module.exports = router;

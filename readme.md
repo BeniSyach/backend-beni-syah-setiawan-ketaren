@@ -11,7 +11,7 @@ API untuk marketplace untuk merchant dan customer.
 
 ## Cara Penggunaan
 - Gunakan Postman untuk menguji endpoint API.
-- Contoh request bisa dilihat di folder `Postman`.
+- Import Backend-ATS.postman_collection.json dan Backend_ATS.postman_environment.json
 
 ## Database
 - Dump SQL disediakan dalam file `db.sql`.

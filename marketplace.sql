@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
--- Generation Time: Oct 18, 2024 at 09:55 AM
--- Server version: 8.3.0
--- PHP Version: 8.3.6
+-- Host: 127.0.0.1
+-- Waktu pembuatan: 18 Okt 2024 pada 19.35
+-- Versi server: 10.4.28-MariaDB
+-- Versi PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,23 +24,20 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `customers`
+-- Struktur dari tabel `customers`
 --
 
-DROP TABLE IF EXISTS `customers`;
-CREATE TABLE IF NOT EXISTS `customers` (
-  `id` int NOT NULL AUTO_INCREMENT,
+CREATE TABLE `customers` (
+  `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `email` varchar(191) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `createdAt` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `updatedAt` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `email` (`email`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `createdAt` timestamp NULL DEFAULT current_timestamp(),
+  `updatedAt` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `customers`
+-- Dumping data untuk tabel `customers`
 --
 
 INSERT INTO `customers` (`id`, `name`, `email`, `password`, `createdAt`, `updatedAt`) VALUES
@@ -49,23 +46,20 @@ INSERT INTO `customers` (`id`, `name`, `email`, `password`, `createdAt`, `update
 -- --------------------------------------------------------
 
 --
--- Table structure for table `merchants`
+-- Struktur dari tabel `merchants`
 --
 
-DROP TABLE IF EXISTS `merchants`;
-CREATE TABLE IF NOT EXISTS `merchants` (
-  `id` int NOT NULL AUTO_INCREMENT,
+CREATE TABLE `merchants` (
+  `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `email` varchar(191) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `createdAt` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `updatedAt` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `email` (`email`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `createdAt` timestamp NULL DEFAULT current_timestamp(),
+  `updatedAt` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `merchants`
+-- Dumping data untuk tabel `merchants`
 --
 
 INSERT INTO `merchants` (`id`, `name`, `email`, `password`, `createdAt`, `updatedAt`) VALUES
@@ -74,56 +68,123 @@ INSERT INTO `merchants` (`id`, `name`, `email`, `password`, `createdAt`, `update
 -- --------------------------------------------------------
 
 --
--- Table structure for table `products`
+-- Struktur dari tabel `products`
 --
 
-DROP TABLE IF EXISTS `products`;
-CREATE TABLE IF NOT EXISTS `products` (
-  `id` int NOT NULL AUTO_INCREMENT,
+CREATE TABLE `products` (
+  `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `price` int NOT NULL,
-  `merchantId` int DEFAULT NULL,
-  `createdAt` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `updatedAt` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
-  KEY `merchantId` (`merchantId`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `price` int(11) NOT NULL,
+  `merchantId` int(11) DEFAULT NULL,
+  `createdAt` timestamp NULL DEFAULT current_timestamp(),
+  `updatedAt` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `products`
+-- Dumping data untuk tabel `products`
 --
 
 INSERT INTO `products` (`id`, `name`, `price`, `merchantId`, `createdAt`, `updatedAt`) VALUES
-(1, 'tas', 1000, 1, '2024-10-18 09:28:05', '2024-10-18 09:28:05');
+(1, 'tas', 1000, 1, '2024-10-18 09:28:05', '2024-10-18 09:28:05'),
+(5, 'sepatu', 200000, 1, '2024-10-18 17:16:57', '2024-10-18 17:16:57');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `transactions`
+-- Struktur dari tabel `transactions`
 --
 
-DROP TABLE IF EXISTS `transactions`;
-CREATE TABLE IF NOT EXISTS `transactions` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `customerId` int DEFAULT NULL,
-  `productId` int DEFAULT NULL,
-  `total` int NOT NULL,
-  `createdAt` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `updatedAt` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
-  KEY `customerId` (`customerId`),
-  KEY `productId` (`productId`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+CREATE TABLE `transactions` (
+  `id` int(11) NOT NULL,
+  `customerId` int(11) DEFAULT NULL,
+  `productId` int(11) DEFAULT NULL,
+  `ongkir` varchar(10) NOT NULL,
+  `total` int(11) NOT NULL,
+  `createdAt` timestamp NULL DEFAULT current_timestamp(),
+  `updatedAt` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `transactions`
+-- Dumping data untuk tabel `transactions`
 --
 
-INSERT INTO `transactions` (`id`, `customerId`, `productId`, `total`, `createdAt`, `updatedAt`) VALUES
-(1, 1, 1, 3000, '2024-10-18 09:31:50', '2024-10-18 09:31:50'),
-(2, 2, 1, 63000000, '2024-10-18 09:34:41', '2024-10-18 09:34:41'),
-(3, 2, 1, 63000000, '2024-10-18 09:38:24', '2024-10-18 09:38:24'),
-(4, 2, 1, 630000, '2024-10-18 09:38:44', '2024-10-18 09:38:44');
+INSERT INTO `transactions` (`id`, `customerId`, `productId`, `ongkir`, `total`, `createdAt`, `updatedAt`) VALUES
+(5, 2, 1, '0', 1000, '2024-10-18 16:39:08', '2024-10-18 16:39:08'),
+(2, 2, 1, '0', 63000000, '2024-10-18 09:34:41', '2024-10-18 09:34:41'),
+(3, 2, 1, '0', 63000000, '2024-10-18 09:38:24', '2024-10-18 09:38:24'),
+(4, 2, 1, '0', 630000, '2024-10-18 09:38:44', '2024-10-18 09:38:44'),
+(6, 2, 1, '0', 1000, '2024-10-18 16:39:18', '2024-10-18 16:39:18'),
+(7, 2, 1, '0', 1000, '2024-10-18 17:08:15', '2024-10-18 17:08:15'),
+(8, 2, 5, '0', 540000, '2024-10-18 17:21:22', '2024-10-18 17:21:22'),
+(9, 2, 5, '', 180000, '2024-10-18 17:22:34', '2024-10-18 17:22:34'),
+(10, 2, 1, '', 630000, '2024-10-18 17:23:22', '2024-10-18 17:23:22'),
+(11, 2, 5, '', 540000, '2024-10-18 17:24:04', '2024-10-18 17:24:04'),
+(12, 2, 1, 'true', 630000, '2024-10-18 17:26:18', '2024-10-18 17:26:18'),
+(13, 2, 5, 'true', 180000, '2024-10-18 17:26:28', '2024-10-18 17:26:28'),
+(14, 2, 5, 'true', 180000, '2024-10-18 17:27:39', '2024-10-18 17:27:39'),
+(15, 2, 5, 'true', 180000, '2024-10-18 17:28:34', '2024-10-18 17:28:34'),
+(16, 2, 5, 'true', 180000, '2024-10-18 17:28:53', '2024-10-18 17:28:53');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indeks untuk tabel `customers`
+--
+ALTER TABLE `customers`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`);
+
+--
+-- Indeks untuk tabel `merchants`
+--
+ALTER TABLE `merchants`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`);
+
+--
+-- Indeks untuk tabel `products`
+--
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `merchantId` (`merchantId`);
+
+--
+-- Indeks untuk tabel `transactions`
+--
+ALTER TABLE `transactions`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `customerId` (`customerId`),
+  ADD KEY `productId` (`productId`);
+
+--
+-- AUTO_INCREMENT untuk tabel yang dibuang
+--
+
+--
+-- AUTO_INCREMENT untuk tabel `customers`
+--
+ALTER TABLE `customers`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT untuk tabel `merchants`
+--
+ALTER TABLE `merchants`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT untuk tabel `products`
+--
+ALTER TABLE `products`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT untuk tabel `transactions`
+--
+ALTER TABLE `transactions`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

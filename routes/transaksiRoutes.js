@@ -1,10 +1,11 @@
 const express = require('express');
-const { createTransaction, getTransactionsByCustomer } = require('../controllers/transaksiController');
+const { createTransaction, getTransactionsByCustomer, getTransactionsByMerchant } = require('../controllers/transaksiController');
 const authenticateJWT = require('../middleware/authMiddleware');
 
 const router = express.Router();
 
 router.post('/', authenticateJWT, createTransaction);
-router.get('/', authenticateJWT, getTransactionsByCustomer);
+router.get('/customer', authenticateJWT, getTransactionsByCustomer);
+router.get('/merchant', authenticateJWT, getTransactionsByMerchant);
 
 module.exports = router;

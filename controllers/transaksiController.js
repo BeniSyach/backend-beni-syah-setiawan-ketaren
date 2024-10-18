@@ -1,6 +1,7 @@
 const Transaction = require('../models/transaksi');
 const Product = require('../models/product');
 const { calculateDiscount, isFreeShipping } = require('../utils/utils');
+const Customer = require('../models/customer');
 
 exports.createTransaction = async (req, res) => {
     const { productId, quantity } = req.body;
@@ -32,6 +33,37 @@ exports.createTransaction = async (req, res) => {
 
 exports.getTransactionsByCustomer = async (req, res) => {
     const customerId = req.user.id;
-    const transactions = await Transaction.findAll({ where: { customerId } });
-    res.json(transactions);
+    try {
+        const transactions = await Transaction.findAll({
+            where: { customerId },
+            include: [{ model: Product, as: 'product' }],
+        });
+        res.json(transactions);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Server Error' });
+    }
+};
+
+exports.getTransactionsByMerchant = async (req, res) => {
+    const merchantId = req.user.id;
+    try {
+        const transactions = await Transaction.findAll({
+            include: [
+                {
+                    model: Product,
+                    as: 'product',
+                    where: { merchantId },
+                },
+                {
+                    model: Customer,
+                    as: 'customer',
+                }
+            ]
+        });
+        res.json(transactions);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Server Error' });
+    }
 };

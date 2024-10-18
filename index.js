@@ -1,5 +1,6 @@
 const express = require('express');
 const dotenv = require('dotenv');
+const cors = require('cors');
 const { sequelize } = require('./config/db');
 
 dotenv.config();
@@ -12,6 +13,7 @@ const transactionRoutes = require('./routes/transaksiRoutes');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+app.use(cors());
 app.use(express.json());
 
 app.use('/api/customers', customerRoutes);

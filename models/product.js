@@ -17,11 +17,11 @@ const Product = sequelize.define('Product', {
     },
     merchantId: {
         type: DataTypes.INTEGER,
-        references: {
-            model: 'Merchants',
-            key: 'id',
-        },
+        allowNull: false,
     },
+}, {
+    tableName: 'Products',
+    timestamps: true,
 });
 
 module.exports = Product;

@@ -50,12 +50,10 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:3000/api/customers/login",
-									"protocol": "http",
+									"raw": "{{base_url}}/api/customers/login",
 									"host": [
-										"localhost"
+										"{{base_url}}"
 									],
-									"port": "3000",
 									"path": [
 										"api",
 										"customers",
@@ -158,12 +156,10 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:3000/api/merchants/login",
-									"protocol": "http",
+									"raw": "{{base_url}}/api/merchants/login",
 									"host": [
-										"localhost"
+										"{{base_url}}"
 									],
-									"port": "3000",
 									"path": [
 										"api",
 										"merchants",
@@ -258,12 +254,10 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:3000/api/customers/register",
-									"protocol": "http",
+									"raw": "{{base_url}}/api/customers/register",
 									"host": [
-										"localhost"
+										"{{base_url}}"
 									],
-									"port": "3000",
 									"path": [
 										"api",
 										"customers",
@@ -353,12 +347,10 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:3000/api/merchants/register",
-									"protocol": "http",
+									"raw": "{{base_url}}/api/merchants/register",
 									"host": [
-										"localhost"
+										"{{base_url}}"
 									],
-									"port": "3000",
 									"path": [
 										"api",
 										"merchants",
@@ -446,12 +438,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/api/products",
-							"protocol": "http",
+							"raw": "{{base_url}}/api/products",
 							"host": [
-								"localhost"
+								"{{base_url}}"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"products"
@@ -465,12 +455,12 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:3000/api/products",
+									"raw": "http://localhost:5000/api/products",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "3000",
+									"port": "5000",
 									"path": [
 										"api",
 										"products"
@@ -486,20 +476,24 @@
 									"value": "Express"
 								},
 								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
 									"key": "Content-Type",
 									"value": "application/json; charset=utf-8"
 								},
 								{
 									"key": "Content-Length",
-									"value": "134"
+									"value": "172"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"86-mzCC+Ce8dze6PsyzlvN+cbhCSCY\""
+									"value": "W/\"ac-6Zo0dCMC2V+90vrPfhTo0QSNzqY\""
 								},
 								{
 									"key": "Date",
-									"value": "Fri, 18 Oct 2024 09:31:16 GMT"
+									"value": "Fri, 18 Oct 2024 15:09:14 GMT"
 								},
 								{
 									"key": "Connection",
@@ -511,7 +505,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "[\n    {\n        \"id\": 1,\n        \"name\": \"tas\",\n        \"price\": \"1000.00\",\n        \"merchantId\": 1,\n        \"createdAt\": \"2024-10-18T09:28:05.000Z\",\n        \"updatedAt\": \"2024-10-18T09:28:05.000Z\"\n    }\n]"
+							"body": "[\n    {\n        \"id\": 1,\n        \"name\": \"tas\",\n        \"price\": 1000,\n        \"merchantId\": 1,\n        \"createdAt\": \"2024-10-18T09:28:05.000Z\",\n        \"updatedAt\": \"2024-10-18T09:28:05.000Z\",\n        \"merchant\": {\n            \"id\": 1,\n            \"name\": \"beni merchant\"\n        }\n    }\n]"
 						}
 					]
 				},
@@ -522,7 +516,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\" : \"tas\",\r\n    \"price\" : \"1000\"\r\n}",
+							"raw": "{\r\n    \"name\" : \"sepatu\",\r\n    \"price\" : \"200000\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -530,12 +524,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/api/products",
-							"protocol": "http",
+							"raw": "{{base_url}}/api/products",
 							"host": [
-								"localhost"
+								"{{base_url}}"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"products"
@@ -607,46 +599,71 @@
 							"body": "{\n    \"id\": 1,\n    \"name\": \"tas\",\n    \"price\": \"1000\",\n    \"merchantId\": 1,\n    \"updatedAt\": \"2024-10-18T09:28:05.261Z\",\n    \"createdAt\": \"2024-10-18T09:28:05.261Z\"\n}"
 						}
 					]
-				}
-			]
-		},
-		{
-			"name": "Transaksi",
-			"item": [
+				},
 				{
-					"name": "Get Transaksi",
+					"name": "Edit Product",
 					"request": {
-						"method": "GET",
+						"method": "PUT",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"sepatu\",\r\n    \"price\" : \"300000\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "http://localhost:3000/api/transactions",
-							"protocol": "http",
+							"raw": "{{base_url}}/api/products/:id",
 							"host": [
-								"localhost"
+								"{{base_url}}"
 							],
-							"port": "3000",
 							"path": [
 								"api",
-								"transactions"
+								"products",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "4"
+								}
 							]
 						}
 					},
 					"response": [
 						{
-							"name": "Get Transaksi",
+							"name": "Edit Product",
 							"originalRequest": {
-								"method": "GET",
+								"method": "PUT",
 								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\" : \"sepatu\",\r\n    \"price\" : \"300000\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
 								"url": {
-									"raw": "http://localhost:3000/api/transactions",
+									"raw": "http://localhost:5000/api/products/:id",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "3000",
+									"port": "5000",
 									"path": [
 										"api",
-										"transactions"
+										"products",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "4"
+										}
 									]
 								}
 							},
@@ -659,20 +676,24 @@
 									"value": "Express"
 								},
 								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
 									"key": "Content-Type",
 									"value": "application/json; charset=utf-8"
 								},
 								{
 									"key": "Content-Length",
-									"value": "139"
+									"value": "134"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"8b-muTOFTLPwbnly3601JBx5yXSZBE\""
+									"value": "W/\"86-cU0i+ylqEoIyxqdi5jmWB5Omgq0\""
 								},
 								{
 									"key": "Date",
-									"value": "Fri, 18 Oct 2024 09:35:28 GMT"
+									"value": "Fri, 18 Oct 2024 15:19:16 GMT"
 								},
 								{
 									"key": "Connection",
@@ -684,7 +705,172 @@
 								}
 							],
 							"cookie": [],
-							"body": "[\n    {\n        \"id\": 2,\n        \"customerId\": 2,\n        \"productId\": 1,\n        \"total\": \"63000000.00\",\n        \"createdAt\": \"2024-10-18T09:34:41.000Z\",\n        \"updatedAt\": \"2024-10-18T09:34:41.000Z\"\n    }\n]"
+							"body": "{\n    \"id\": 3,\n    \"name\": \"sepatu\",\n    \"price\": \"300000\",\n    \"merchantId\": 1,\n    \"createdAt\": \"2024-10-18T15:16:10.000Z\",\n    \"updatedAt\": \"2024-10-18T15:19:16.984Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Product",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/products/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"products",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "4"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete Product",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5000/api/products/:id",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"products",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "4"
+										}
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"26-rrpe0qUCAnMXjgAsYQk0LeGFZXM\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 18 Oct 2024 15:21:40 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Transaksi",
+			"item": [
+				{
+					"name": "Get Transaksi by customer",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/transactions/customer",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"transactions",
+								"customer"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Transaksi by customer",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/transactions/customer",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"transactions",
+										"customer"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "812"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"32c-+YcbaoGl3etmojf+jW8UbSZksZ4\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 18 Oct 2024 15:11:15 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 2,\n        \"customerId\": 2,\n        \"productId\": 1,\n        \"total\": 63000000,\n        \"createdAt\": \"2024-10-18T09:34:41.000Z\",\n        \"updatedAt\": \"2024-10-18T09:34:41.000Z\",\n        \"product\": {\n            \"id\": 1,\n            \"name\": \"tas\",\n            \"price\": 1000,\n            \"merchantId\": 1,\n            \"createdAt\": \"2024-10-18T09:28:05.000Z\",\n            \"updatedAt\": \"2024-10-18T09:28:05.000Z\"\n        }\n    },\n    {\n        \"id\": 3,\n        \"customerId\": 2,\n        \"productId\": 1,\n        \"total\": 63000000,\n        \"createdAt\": \"2024-10-18T09:38:24.000Z\",\n        \"updatedAt\": \"2024-10-18T09:38:24.000Z\",\n        \"product\": {\n            \"id\": 1,\n            \"name\": \"tas\",\n            \"price\": 1000,\n            \"merchantId\": 1,\n            \"createdAt\": \"2024-10-18T09:28:05.000Z\",\n            \"updatedAt\": \"2024-10-18T09:28:05.000Z\"\n        }\n    },\n    {\n        \"id\": 4,\n        \"customerId\": 2,\n        \"productId\": 1,\n        \"total\": 630000,\n        \"createdAt\": \"2024-10-18T09:38:44.000Z\",\n        \"updatedAt\": \"2024-10-18T09:38:44.000Z\",\n        \"product\": {\n            \"id\": 1,\n            \"name\": \"tas\",\n            \"price\": 1000,\n            \"merchantId\": 1,\n            \"createdAt\": \"2024-10-18T09:28:05.000Z\",\n            \"updatedAt\": \"2024-10-18T09:28:05.000Z\"\n        }\n    }\n]"
 						}
 					]
 				},
@@ -703,12 +889,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/api/transactions",
-							"protocol": "http",
+							"raw": "{{base_url}}/api/transactions",
 							"host": [
-								"localhost"
+								"{{base_url}}"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"transactions"
@@ -778,6 +962,83 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"id\": 2,\n    \"customerId\": 2,\n    \"productId\": \"1\",\n    \"total\": 63000000,\n    \"updatedAt\": \"2024-10-18T09:34:41.776Z\",\n    \"createdAt\": \"2024-10-18T09:34:41.776Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Transaksi bt Merchant",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/transactions/merchant",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"transactions",
+								"merchant"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Transaksi bt Merchant",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/transactions/merchant",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"transactions",
+										"merchant"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1779"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"6f3-ETEjuipF2IaoAUcE0P0EXC74LKI\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 18 Oct 2024 15:01:06 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"customerId\": 1,\n        \"productId\": 1,\n        \"total\": 3000,\n        \"createdAt\": \"2024-10-18T09:31:50.000Z\",\n        \"updatedAt\": \"2024-10-18T09:31:50.000Z\",\n        \"product\": {\n            \"id\": 1,\n            \"name\": \"tas\",\n            \"price\": 1000,\n            \"merchantId\": 1,\n            \"createdAt\": \"2024-10-18T09:28:05.000Z\",\n            \"updatedAt\": \"2024-10-18T09:28:05.000Z\"\n        },\n        \"customer\": null\n    },\n    {\n        \"id\": 2,\n        \"customerId\": 2,\n        \"productId\": 1,\n        \"total\": 63000000,\n        \"createdAt\": \"2024-10-18T09:34:41.000Z\",\n        \"updatedAt\": \"2024-10-18T09:34:41.000Z\",\n        \"product\": {\n            \"id\": 1,\n            \"name\": \"tas\",\n            \"price\": 1000,\n            \"merchantId\": 1,\n            \"createdAt\": \"2024-10-18T09:28:05.000Z\",\n            \"updatedAt\": \"2024-10-18T09:28:05.000Z\"\n        },\n        \"customer\": {\n            \"id\": 2,\n            \"name\": \"beni customer\",\n            \"email\": \"benicustomer@gmail.com\",\n            \"password\": \"$2b$10$aOsLan0efM4Icq4IPTnch.Nvy.xmiEWqryEH4FwqZZVApz7sxjxa.\",\n            \"createdAt\": \"2024-10-18T09:13:17.000Z\",\n            \"updatedAt\": \"2024-10-18T09:13:17.000Z\"\n        }\n    },\n    {\n        \"id\": 3,\n        \"customerId\": 2,\n        \"productId\": 1,\n        \"total\": 63000000,\n        \"createdAt\": \"2024-10-18T09:38:24.000Z\",\n        \"updatedAt\": \"2024-10-18T09:38:24.000Z\",\n        \"product\": {\n            \"id\": 1,\n            \"name\": \"tas\",\n            \"price\": 1000,\n            \"merchantId\": 1,\n            \"createdAt\": \"2024-10-18T09:28:05.000Z\",\n            \"updatedAt\": \"2024-10-18T09:28:05.000Z\"\n        },\n        \"customer\": {\n            \"id\": 2,\n            \"name\": \"beni customer\",\n            \"email\": \"benicustomer@gmail.com\",\n            \"password\": \"$2b$10$aOsLan0efM4Icq4IPTnch.Nvy.xmiEWqryEH4FwqZZVApz7sxjxa.\",\n            \"createdAt\": \"2024-10-18T09:13:17.000Z\",\n            \"updatedAt\": \"2024-10-18T09:13:17.000Z\"\n        }\n    },\n    {\n        \"id\": 4,\n        \"customerId\": 2,\n        \"productId\": 1,\n        \"total\": 630000,\n        \"createdAt\": \"2024-10-18T09:38:44.000Z\",\n        \"updatedAt\": \"2024-10-18T09:38:44.000Z\",\n        \"product\": {\n            \"id\": 1,\n            \"name\": \"tas\",\n            \"price\": 1000,\n            \"merchantId\": 1,\n            \"createdAt\": \"2024-10-18T09:28:05.000Z\",\n            \"updatedAt\": \"2024-10-18T09:28:05.000Z\"\n        },\n        \"customer\": {\n            \"id\": 2,\n            \"name\": \"beni customer\",\n            \"email\": \"benicustomer@gmail.com\",\n            \"password\": \"$2b$10$aOsLan0efM4Icq4IPTnch.Nvy.xmiEWqryEH4FwqZZVApz7sxjxa.\",\n            \"createdAt\": \"2024-10-18T09:13:17.000Z\",\n            \"updatedAt\": \"2024-10-18T09:13:17.000Z\"\n        }\n    }\n]"
 						}
 					]
 				}

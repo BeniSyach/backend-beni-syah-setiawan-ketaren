@@ -22,6 +22,7 @@ exports.createTransaction = async (req, res) => {
     const transaction = await Transaction.create({
       customerId,
       productId,
+      ongkir: freeShipping.toString(),
       total: finalTotal,
     });
     res.status(201).json({

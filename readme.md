@@ -7,7 +7,7 @@ API untuk marketplace untuk merchant dan customer.
 1. Clone repository ini.
 2. Install dependensi dengan menjalankan `npm install`.
 3. Import Database yang sudah disediakan
-4. Jalankan aplikasi dengan `node index.js`.
+4. Jalankan aplikasi dengan `npm run dev`.
 
 ## Cara Penggunaan
 - Gunakan Postman untuk menguji endpoint API.

@@ -14,4 +14,4 @@ API untuk marketplace untuk merchant dan customer.
 - Import Backend-ATS.postman_collection.json dan Backend_ATS.postman_environment.json
 
 ## Database
-- Dump SQL disediakan dalam file `db.sql`.
+- Dump SQL disediakan dalam file `marketplace.sql`.
